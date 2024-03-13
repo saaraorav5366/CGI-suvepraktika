@@ -9,5 +9,4 @@ public class CgiSuvepraktikaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CgiSuvepraktikaApplication.class, args);
 	}
-//		testing commits
 }
