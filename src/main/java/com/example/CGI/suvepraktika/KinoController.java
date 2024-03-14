@@ -2,6 +2,7 @@
 package com.example.CGI.suvepraktika;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
@@ -15,8 +16,11 @@ public class KinoController {
     }
 
     @GetMapping("/kava")
-    public List<Seanss> getKinokava() {
-        return kava.getKinokava();
+    public List<Seanss> getKinokava(@RequestParam(required = false) Integer vanusepiirang,
+                                    @RequestParam(required = false) String keel,
+                                    @RequestParam(required = false) String žanr,
+                                    @RequestParam(required = false) String algusaeg) {
+        return kava.getKinokava(vanusepiirang, keel, žanr, algusaeg);
     }
 }
 
