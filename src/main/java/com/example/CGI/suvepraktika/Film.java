@@ -2,14 +2,14 @@ package com.example.CGI.suvepraktika;
 
 public class Film {
     private String pealkiri;
-    private String žanr;
+    private String zanr;
     private Integer vanusepiirang;
     private String keel;
 
     // Constructor
-    public Film(String pealkiri, String žanr, Integer vanusepiirang, String keel) {
+    public Film(String pealkiri, String zanr, Integer vanusepiirang, String keel) {
         this.pealkiri = pealkiri;
-        this.žanr = žanr;
+        this.zanr = zanr;
         this.vanusepiirang = vanusepiirang;
         this.keel = keel;
     }
@@ -23,12 +23,12 @@ public class Film {
         this.pealkiri = pealkiri;
     }
 
-    public String getŽanr() {
-        return žanr;
+    public String getZanr() {
+        return zanr;
     }
 
-    public void setŽanr(String žanr) {
-        this.žanr = žanr;
+    public void setZanr(String zanr) {
+        this.zanr = zanr;
     }
 
     public Integer getVanusepiirang() {
