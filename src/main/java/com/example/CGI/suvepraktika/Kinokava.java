@@ -2,9 +2,7 @@ package com.example.CGI.suvepraktika;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Component
 public class Kinokava {
@@ -20,23 +18,26 @@ public class Kinokava {
     }
 
 
-    public List<Seanss> getKinokava(Integer vanusepiirang, String keel, String zanr, Double algusaeg) {
-        List<Seanss> filtreeritudKava = new ArrayList<>();
+
+    public Set<Seanss> getKinokava(Integer vanusepiirang, String keel, String zanr, Double algusaeg) {
+        Set<Seanss> filtreeritudKava = new HashSet<>();
         List<Seanss> koguKava = genereeriKinokava();
         List<String> zanriValikud = Arrays.asList("Ponevik", "Komoodia", "Seikludfilm", "Muusikal", "Marul");
+
         for (Seanss seanss : koguKava) {
             Film film = seanss.getFilm();
             if ((vanusepiirang == null || vanusepiirang <= film.getVanusepiirang()) &&
                     (keel == null || film.getKeel().contains(keel)) &&
-                    (zanr == null || zanriValikud.contains(film.getZanr()))){
-                filtreeritudKava.add(seanss);
-            }
-            for(Double aeg : seanss.getAlgusaeg()){
-                if(algusaeg == null || algusaeg <= aeg){
-                    filtreeritudKava.add(seanss);
+                    (zanr == null || zanriValikud.contains(film.getZanr()))) {
+                for (Double aeg : seanss.getAlgusaeg()) {
+                    if (algusaeg == null || algusaeg <= aeg) {
+                        filtreeritudKava.add(seanss);
+                        break;
+                    }
                 }
             }
         }
         return filtreeritudKava;
     }
+
 }

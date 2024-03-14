@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/kino")
@@ -17,10 +18,10 @@ public class KinoController {
 
 
     @GetMapping("/kava")
-    public List<Seanss> getKinokava(@RequestParam(required = false) Integer vanusepiirang,
-                                    @RequestParam(required = false) String keel,
-                                    @RequestParam(required = false) String zanr,
-                                    @RequestParam(required = false) Double algusaeg) {
+    public Set<Seanss> getKinokava(@RequestParam(required = false) Integer vanusepiirang,
+                                   @RequestParam(required = false) String keel,
+                                   @RequestParam(required = false) String zanr,
+                                   @RequestParam(required = false) Double algusaeg) {
         return kava.getKinokava(vanusepiirang, keel, zanr, algusaeg);
     }
 }
