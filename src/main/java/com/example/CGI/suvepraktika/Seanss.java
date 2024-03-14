@@ -1,17 +1,30 @@
 package com.example.CGI.suvepraktika;
 
-import java.time.LocalDateTime;
-
+/**
+ * Klass nimega Seanss, mis esindab kinofilmi ja algusaja atribuute ja käitumist.
+ */
 public class Seanss {
-    private Film film;
-    private String algusAeg;
 
-    public Seanss(Film film, String algusAeg) {
+    /**
+     * Filmi object mis vastab seansile.
+     */
+    private Film film;
+
+    /**
+     * Filmi algusaeg on esitatud Stringina.
+     */
+    private String algusaeg;
+
+    /**
+     * Seanss klassi konstruktor.
+     * @param film object mis vastab seansile.
+     * @param algusaeg filmi algusaeg
+     */
+    public Seanss(Film film, String algusaeg) {
         this.film = film;
-        this.algusAeg = algusAeg;
+        this.algusaeg = algusaeg;
     }
 
-    // Getters and setters
     public Film getFilm() {
         return film;
     }
@@ -20,11 +33,11 @@ public class Seanss {
         this.film = film;
     }
 
-    public String getAlgusAeg() {
-        return algusAeg;
+    public String getAlgusaeg() {
+        return algusaeg;
     }
 
-    public void setAlgusAeg(String algusAeg) {
-        this.algusAeg = algusAeg;
+    public void setAlgusaeg(String algusaeg) {
+        this.algusaeg = algusaeg;
     }
 }
