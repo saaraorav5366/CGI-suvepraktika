@@ -1,5 +1,7 @@
 package com.example.CGI.suvepraktika;
 
+import java.util.List;
+
 /**
  * Klass nimega Film, mis esindab kinofilmi atribuute ja käitumist.
  */
@@ -20,9 +22,9 @@ public class Film {
     private Integer vanusepiirang;
 
     /**
-     *  Filmi keel on esitatud Stringina.
+     *  Filmi keel on esitatud List<String>, sest filmi võidakse näidata mitmes keeles.
      */
-    private String keel;
+    private List<String> keel;
 
     /**
      * Filmi konstruktor.
@@ -31,7 +33,7 @@ public class Film {
      * @param vanusepiirang filmi vanusepiirang
      * @param keel filmi keel
      */
-    public Film(String pealkiri, String zanr, Integer vanusepiirang, String keel) {
+    public Film(String pealkiri, String zanr, Integer vanusepiirang, List<String> keel) {
         this.pealkiri = pealkiri;
         this.zanr = zanr;
         this.vanusepiirang = vanusepiirang;
@@ -63,11 +65,11 @@ public class Film {
         return vanusepiirang;
     }
 
-    public void setKeel(String keel) {
+    public void setKeel(List<String> keel) {
         this.keel = keel;
     }
 
-    public String getKeel() {
+    public List<String> getKeel() {
         return keel;
     }
 

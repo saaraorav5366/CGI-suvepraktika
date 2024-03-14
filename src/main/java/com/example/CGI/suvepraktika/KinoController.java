@@ -16,11 +16,11 @@ public class KinoController {
     }
 
 
-//    @GetMapping("/kava")
+    @GetMapping("/kava")
     public List<Seanss> getKinokava(@RequestParam(required = false) Integer vanusepiirang,
                                     @RequestParam(required = false) String keel,
                                     @RequestParam(required = false) String zanr,
-                                    @RequestParam(required = false) String algusaeg) {
+                                    @RequestParam(required = false) Double algusaeg) {
         return kava.getKinokava(vanusepiirang, keel, zanr, algusaeg);
     }
 }
