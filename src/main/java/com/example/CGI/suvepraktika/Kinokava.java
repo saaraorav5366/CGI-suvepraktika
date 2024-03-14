@@ -15,6 +15,7 @@ public class Kinokava {
         return kinokava;
     }
 
+
     public List<Seanss> getKinokava(Integer vanusepiirang, String keel, String zanr, String algusaeg) {
         List<Seanss> filtreeritudKava = new ArrayList<>();
         List<Seanss> koguKava = genereeriKinokava();

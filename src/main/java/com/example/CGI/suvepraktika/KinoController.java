@@ -15,6 +15,7 @@ public class KinoController {
         this.kava = kava;
     }
 
+
     @GetMapping("/kava")
     public List<Seanss> getKinokava(@RequestParam(required = false) Integer vanusepiirang,
                                     @RequestParam(required = false) String keel,
