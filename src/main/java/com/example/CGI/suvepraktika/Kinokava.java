@@ -22,13 +22,12 @@ public class Kinokava {
     public Set<Seanss> getKinokava(Integer vanusepiirang, String keel, String zanr, Double algusaeg) {
         Set<Seanss> filtreeritudKava = new HashSet<>();
         List<Seanss> koguKava = genereeriKinokava();
-        List<String> zanriValikud = Arrays.asList("Ponevik", "Komoodia", "Seikludfilm", "Muusikal", "Marul");
 
         for (Seanss seanss : koguKava) {
             Film film = seanss.getFilm();
             if ((vanusepiirang == null || vanusepiirang <= film.getVanusepiirang()) &&
                     (keel == null || film.getKeel().contains(keel)) &&
-                    (zanr == null || zanriValikud.contains(film.getZanr()))) {
+                    (zanr == null || Objects.equals(film.getZanr(), zanr))) {
                 for (Double aeg : seanss.getAlgusaeg()) {
                     if (algusaeg == null || algusaeg <= aeg) {
                         filtreeritudKava.add(seanss);
