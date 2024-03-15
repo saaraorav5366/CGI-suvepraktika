@@ -11,11 +11,9 @@ import java.util.Set;
 @RequestMapping("/kino")
 public class KinoController {
     private final Kinokava kava;
-//    private final VaatamisAjalugu vaatamisAjalugu;
 
     public KinoController(Kinokava kava) {
         this.kava = kava;
-//        this.vaatamisAjalugu = vaatamisAjalugu;
     }
 
 
@@ -28,23 +26,23 @@ public class KinoController {
     }
 
     @GetMapping("/soovitused")
-    public String getSoovitused(Integer kasutajaId, Integer vanusepiirang, String keel, String zanr, Double algusaeg) {
-//        List<VaatamisAjalugu> vaatajad = vaatamisAjalugu.genereeriVaatajad();
-//        VaatamisAjalugu viewer = null;
-//        for (VaatamisAjalugu vaataja : vaatajad) {
-//            if (vaataja.getKasutajaId() == kasutajaId) {
-//                viewer = vaataja;
-//                break;
-//            }
-//        }
-//
-//        if (viewer == null) {
-//            return null;
-//        }
-//
-//        Set<Seanss> filteredSchedule = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
+    public String getSoovitused(@RequestParam(required = false) Integer kasutajaId, Integer vanusepiirang, String keel, String zanr, Double algusaeg) {
+        List<VaatamisAjalugu> vaatajad = Config.genereeriVaatajad();
+        VaatamisAjalugu viewer = null;
+        for (VaatamisAjalugu vaataja : vaatajad) {
+            if (vaataja.getKasutajaId() == kasutajaId) {
+                viewer = vaataja;
+                break;
+            }
+        }
 
-        return "hello";
+        if (viewer == null) {
+            return null;
+        }
+
+        Set<Seanss> soovitus = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
+
+        return VaatamisSoovitused.genereeriFilmisoovitused(viewer, soovitus).toString();
     }
 }
 
