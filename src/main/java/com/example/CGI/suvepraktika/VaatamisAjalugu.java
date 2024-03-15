@@ -1,5 +1,5 @@
 package com.example.CGI.suvepraktika;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class VaatamisAjalugu {
     private Integer kasutajaId;
     private Set<List<String>> vaadatudFilmid;
 
-    @Autowired
+
     public VaatamisAjalugu(Integer kasutajaId, Set<List<String>> vaadatudFilmid) {
         this.kasutajaId = kasutajaId;
         this.vaadatudFilmid = vaadatudFilmid;

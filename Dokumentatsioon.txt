@@ -1,1 +1,2 @@
-Test test
+eile: 3-4h
+tana: 2.5h

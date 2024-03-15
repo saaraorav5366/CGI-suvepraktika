@@ -11,9 +11,11 @@ import java.util.Set;
 @RequestMapping("/kino")
 public class KinoController {
     private final Kinokava kava;
+//    private final VaatamisAjalugu vaatamisAjalugu;
 
     public KinoController(Kinokava kava) {
         this.kava = kava;
+//        this.vaatamisAjalugu = vaatamisAjalugu;
     }
 
 
@@ -23,6 +25,26 @@ public class KinoController {
                                    @RequestParam(required = false) String zanr,
                                    @RequestParam(required = false) Double algusaeg) {
         return kava.getKinokava(vanusepiirang, keel, zanr, algusaeg);
+    }
+
+    @GetMapping("/soovitused")
+    public String getSoovitused(Integer kasutajaId, Integer vanusepiirang, String keel, String zanr, Double algusaeg) {
+//        List<VaatamisAjalugu> vaatajad = vaatamisAjalugu.genereeriVaatajad();
+//        VaatamisAjalugu viewer = null;
+//        for (VaatamisAjalugu vaataja : vaatajad) {
+//            if (vaataja.getKasutajaId() == kasutajaId) {
+//                viewer = vaataja;
+//                break;
+//            }
+//        }
+//
+//        if (viewer == null) {
+//            return null;
+//        }
+//
+//        Set<Seanss> filteredSchedule = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
+
+        return "hello";
     }
 }
 
