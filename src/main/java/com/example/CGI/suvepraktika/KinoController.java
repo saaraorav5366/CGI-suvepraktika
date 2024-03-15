@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @RestController
@@ -26,23 +27,20 @@ public class KinoController {
     }
 
     @GetMapping("/soovitused")
-    public String getSoovitused(@RequestParam(required = false) Integer kasutajaId, Integer vanusepiirang, String keel, String zanr, Double algusaeg) {
+    public Set<Seanss> getSoovitused(@RequestParam Integer kasutajaId, @RequestParam(required = false) Integer vanusepiirang, @RequestParam(required = false) String keel, @RequestParam(required = false) String zanr, @RequestParam(required = false)Double algusaeg) {
         List<VaatamisAjalugu> vaatajad = Config.genereeriVaatajad();
         VaatamisAjalugu viewer = null;
         for (VaatamisAjalugu vaataja : vaatajad) {
-            if (vaataja.getKasutajaId() == kasutajaId) {
+            if (Objects.equals(vaataja.getKasutajaId().getKasutajaId(), kasutajaId)) {
                 viewer = vaataja;
                 break;
             }
         }
-
         if (viewer == null) {
             return null;
         }
-
         Set<Seanss> soovitus = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
-
-        return VaatamisSoovitused.genereeriFilmisoovitused(viewer, soovitus).toString();
+        return VaatamisSoovitused.genereeriFilmisoovitused(viewer, soovitus);
     }
 }
 
