@@ -39,8 +39,8 @@ public class KinoController {
         if (viewer == null) {
             return null;
         }
-        Set<Seanss> soovitus = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
-        return VaatamisSoovitused.genereeriFilmisoovitused(viewer, soovitus);
+        Set<Seanss> kinokava = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
+        return VaatamisSoovitused.genereeriFilmisoovitused(viewer, kinokava);
     }
 }
 

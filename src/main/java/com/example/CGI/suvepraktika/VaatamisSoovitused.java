@@ -13,8 +13,15 @@ public class VaatamisSoovitused {
 
         // kui vaatajal pole vaatamisajalugu -- soovita suvaliselt 3 filmi
         if (vaadatudFilmid.isEmpty()) {
+            List<Seanss> kinokavaList = new ArrayList<>(kinokava);
             Set<Seanss> set = new HashSet<>();
-            set.add(kinokava.stream().skip(new Random().nextInt(kinokava.size())).findFirst().orElse(null)); //INTERNET!!
+            Random random = new Random();
+            while (set.size() < 3 && !kinokavaList.isEmpty()) {
+                int randomIndex = random.nextInt(kinokavaList.size());
+                Seanss randomSeanss = kinokavaList.get(randomIndex);
+                set.add(randomSeanss);
+                kinokavaList.remove(randomIndex); // Remove the selected Seanss from the list
+            }
             return set;
         }
 

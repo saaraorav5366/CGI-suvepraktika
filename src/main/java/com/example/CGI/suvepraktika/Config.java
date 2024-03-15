@@ -11,7 +11,7 @@ import java.util.Set;
 public class Config {
         public static List<VaatamisAjalugu> genereeriVaatajad(){
         List<VaatamisAjalugu> vaatajad = new ArrayList<>();
-        vaatajad.add(new VaatamisAjalugu(new Kasutaja(90220), Set.of(List.of()))); //vaatamisajalugu puudub
+        vaatajad.add(new VaatamisAjalugu(new Kasutaja(90220), new HashSet<>(new ArrayList<>()))); //vaatamisajalugu puudub
         vaatajad.add(new VaatamisAjalugu(new Kasutaja(90225),
                 Set.of(List.of("Oppenheimer","Ponevik", "Inglise keel"), // on kõige rohkem põnevikke näinud
                 List.of("Barbie","Komoodia", "Inglise keel"),           // algoritm peaks soovitama: Spider-Man: No Way Home
