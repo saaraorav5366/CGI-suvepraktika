@@ -1,23 +1,27 @@
 package com.example.CGI.suvepraktika;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+@Component
 public class VaatamisAjalugu {
     private Integer kasutajaId;
     private Set<List<String>> vaadatudFilmid;
 
+    @Autowired
     public VaatamisAjalugu(Integer kasutajaId, Set<List<String>> vaadatudFilmid) {
         this.kasutajaId = kasutajaId;
         this.vaadatudFilmid = vaadatudFilmid;
     }
 
-    public void setKasutajaId(Integer kasutajaId) {
+    public void setKasutajaId(int kasutajaId) {
         this.kasutajaId = kasutajaId;
     }
 
-    public Integer getKasutajaId() {
+    public int getKasutajaId() {
         return kasutajaId;
     }
 
