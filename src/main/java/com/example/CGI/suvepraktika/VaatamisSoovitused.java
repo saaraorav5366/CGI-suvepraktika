@@ -7,22 +7,23 @@ import java.util.*;
 @Service
 public class VaatamisSoovitused {
 
-    public static Set<Seanss> genereeriFilmisoovitused(VaatamisAjalugu vaatamisAjalugu, Set<Seanss> kinokava){
+    public static String genereeriFilmisoovitused(VaatamisAjalugu vaatamisAjalugu, Set<Seanss> kinokava){
 
         Set<List<String>> vaadatudFilmid = vaatamisAjalugu.getVaadatudFilmid();
 
         // kui vaatajal pole vaatamisajalugu -- soovita suvaliselt 3 filmi
         if (vaadatudFilmid.isEmpty()) {
-            List<Seanss> kinokavaList = new ArrayList<>(kinokava);
+            List<Seanss> kinokavaList = new ArrayList<>(kinokava); //koopia kinokavast kasutades List, et hiljem saaks get kasutada
             Set<Seanss> set = new HashSet<>();
             Random random = new Random();
             while (set.size() < 3 && !kinokavaList.isEmpty()) {
                 int randomIndex = random.nextInt(kinokavaList.size());
                 Seanss randomSeanss = kinokavaList.get(randomIndex);
                 set.add(randomSeanss);
-                kinokavaList.remove(randomIndex); // Remove the selected Seanss from the list
+                kinokavaList.remove(randomIndex); // kustuta validtud seanss kinokavaList'ist
             }
-            return set;
+//            return set;
+            return "hello";
         }
 
         // kasutan HashMap'i et loendada vaataja zanre ja keeli
@@ -37,22 +38,24 @@ public class VaatamisSoovitused {
 
         // leia enimvaadatud zanr ja keel
         String vaadatuimZanr = Collections.max(zanrArv.entrySet(), Map.Entry.comparingByValue()).getKey();
+        System.out.println((vaadatuimZanr));
         String vaadatuimKeel = Collections.max(keelteArv.entrySet(), Map.Entry.comparingByValue()).getKey();
 
         // genereeri filmisoovitused
+        //algoritm tootab kasutajaga 90235
         Set<Seanss> soovitused = new HashSet<>();
         for (Seanss seanss : kinokava) {
             Film film = seanss.getFilm();
-            if (film.getZanr().equals(vaadatuimZanr) && !vaadatudFilmid.contains(Arrays.asList(film.getPealkiri(), vaadatuimZanr, vaadatuimKeel))) {
+            if (film.getZanr().equals(vaadatuimZanr) && !vaadatudFilmid.contains(Arrays.asList(film.getPealkiri(), film.getZanr(), film.getKeel()))) {
                 soovitused.add(seanss);
             }
         }
 
         // kui juba enimvaadatud zanri film on nähtud
-//        if (recommendations.isEmpty()) {
+//        if (soovitused.isEmpty()) {
 //
 //        }
 
-        return soovitused;
+        return vaadatuimZanr;
     }
 }

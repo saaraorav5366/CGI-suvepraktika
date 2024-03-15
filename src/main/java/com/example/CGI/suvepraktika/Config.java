@@ -23,7 +23,7 @@ public class Config {
                         List.of("Oppenheimer","Ponevik", "Eesti keel"), // alogritm peaks soovitama: Don't Worry Darling
                         List.of("Klass","Draama", "Eesti keel"),
                         List.of("Kevade","Draama", "Eesti keel"),
-                        List.of("Poor Things","Drama", "Inglise keel"))));
+                        List.of("Poor Things","Draama", "Inglise keel"))));
         vaatajad.add(new VaatamisAjalugu(new Kasutaja(90235),
                 Set.of(List.of("Klass","Draama", "Eesti keel")))); // alogritm peaks soovitama: Don't Worry Darling ja Poor Things
         return vaatajad;

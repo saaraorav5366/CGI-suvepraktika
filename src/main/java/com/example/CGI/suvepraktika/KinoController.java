@@ -27,7 +27,7 @@ public class KinoController {
     }
 
     @GetMapping("/soovitused")
-    public Set<Seanss> getSoovitused(@RequestParam Integer kasutajaId, @RequestParam(required = false) Integer vanusepiirang, @RequestParam(required = false) String keel, @RequestParam(required = false) String zanr, @RequestParam(required = false)Double algusaeg) {
+    public String getSoovitused(@RequestParam Integer kasutajaId, @RequestParam(required = false) Integer vanusepiirang, @RequestParam(required = false) String keel, @RequestParam(required = false) String zanr, @RequestParam(required = false)Double algusaeg) {
         List<VaatamisAjalugu> vaatajad = Config.genereeriVaatajad();
         VaatamisAjalugu viewer = null;
         for (VaatamisAjalugu vaataja : vaatajad) {
