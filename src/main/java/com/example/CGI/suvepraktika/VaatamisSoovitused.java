@@ -7,7 +7,7 @@ import java.util.*;
 @Service
 public class VaatamisSoovitused {
 
-    public static String genereeriFilmisoovitused(VaatamisAjalugu vaatamisAjalugu, Set<Seanss> kinokava){
+    public static Set<Seanss> genereeriFilmisoovitused(VaatamisAjalugu vaatamisAjalugu, Set<Seanss> kinokava){
 
         Set<List<String>> vaadatudFilmid = vaatamisAjalugu.getVaadatudFilmid();
 
@@ -22,24 +22,18 @@ public class VaatamisSoovitused {
                 set.add(randomSeanss);
                 kinokavaList.remove(randomIndex); // kustuta validtud seanss kinokavaList'ist
             }
-//            return set;
-            return "hello";
+            return set;
         }
 
         // kasutan HashMap'i et loendada vaataja zanre ja keeli
         Map<String, Integer> zanrArv = new HashMap<>();
-        Map<String, Integer> keelteArv = new HashMap<>();
         for (List<String> filmInfo : vaadatudFilmid) {
             String zanr = filmInfo.get(1); // zanr asub index 1
-            String keel = filmInfo.get(2); // filmi keel asub index 2
             zanrArv.put(zanr, zanrArv.getOrDefault(zanr, 0) + 1);
-            keelteArv.put(keel, keelteArv.getOrDefault(keel, 0) + 1);
         }
 
-        // leia enimvaadatud zanr ja keel
+        // leia enimvaadatud zanr
         String vaadatuimZanr = Collections.max(zanrArv.entrySet(), Map.Entry.comparingByValue()).getKey();
-        System.out.println((vaadatuimZanr));
-        String vaadatuimKeel = Collections.max(keelteArv.entrySet(), Map.Entry.comparingByValue()).getKey();
 
         // genereeri filmisoovitused
         //algoritm tootab kasutajaga 90235
@@ -51,11 +45,35 @@ public class VaatamisSoovitused {
             }
         }
 
-        // kui juba enimvaadatud zanri film on nähtud
+//         kui juba enimvaadatud zanri film on nähtud ja sellest zanrist pole muid filme
 //        if (soovitused.isEmpty()) {
+//            String sarnaseimZanr = sarnaseimZanr(vaadatuimZanr);
 //
+//            // otsi filme millel on kõige sarnaseim zanr
+//            for (Seanss seanss : kinokava) {
+//                Film film = seanss.getFilm();
+//                if (film.getZanr().equals(sarnaseimZanr)) {
+//                    soovitused.add(seanss);
+//                }
+//            }
 //        }
+        return soovitused;
+    }
 
-        return vaadatuimZanr;
+    private static String sarnaseimZanr(String vaadatuimZanr){
+
+        if(Objects.equals(vaadatuimZanr, "Ponevik")){
+            return "Marul";
+        } else if (Objects.equals(vaadatuimZanr, "Marul")) {
+            return "Ponevik";
+        } else if (Objects.equals(vaadatuimZanr, "Muusikal")) {
+            return "Draama";
+        } else if (Objects.equals(vaadatuimZanr, "Draama")) {
+            return "Muusikal";
+        } else if (Objects.equals(vaadatuimZanr, "Seiklusfilm")) {
+            return "Komoodia";
+        } else {
+            return "Seiklusfilm";
+        }
     }
 }

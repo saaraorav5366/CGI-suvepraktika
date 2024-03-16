@@ -27,7 +27,7 @@ public class KinoController {
     }
 
     @GetMapping("/soovitused")
-    public String getSoovitused(@RequestParam Integer kasutajaId, @RequestParam(required = false) Integer vanusepiirang, @RequestParam(required = false) String keel, @RequestParam(required = false) String zanr, @RequestParam(required = false)Double algusaeg) {
+    public Set<Seanss> getSoovitused(@RequestParam Integer kasutajaId, @RequestParam(required = false) Integer vanusepiirang, @RequestParam(required = false) String keel, @RequestParam(required = false) String zanr, @RequestParam(required = false)Double algusaeg) {
         List<VaatamisAjalugu> vaatajad = Config.genereeriVaatajad();
         VaatamisAjalugu viewer = null;
         for (VaatamisAjalugu vaataja : vaatajad) {
@@ -36,11 +36,12 @@ public class KinoController {
                 break;
             }
         }
-        if (viewer == null) {
-            return null;
-        }
-        Set<Seanss> kinokava = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
-        return VaatamisSoovitused.genereeriFilmisoovitused(viewer, kinokava);
+
+
+        Set<Seanss> soovitus = kava.getKinokava(vanusepiirang, keel,  zanr, algusaeg);
+
+        assert viewer != null;
+        return VaatamisSoovitused.genereeriFilmisoovitused(viewer, soovitus);
     }
 }
 
