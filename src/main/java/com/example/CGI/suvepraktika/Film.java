@@ -22,9 +22,9 @@ public class Film {
     private Integer vanusepiirang;
 
     /**
-     *  Filmi keel on esitatud List<String>, sest filmi võidakse näidata mitmes keeles.
+     *  Filmi keel on esitatud String.
      */
-    private List<String> keel;
+    private String keel;
 
     /**
      * Filmi konstruktor.
@@ -33,7 +33,7 @@ public class Film {
      * @param vanusepiirang filmi vanusepiirang
      * @param keel filmi keel
      */
-    public Film(String pealkiri, String zanr, Integer vanusepiirang, List<String> keel) {
+    public Film(String pealkiri, String zanr, Integer vanusepiirang, String keel) {
         this.pealkiri = pealkiri;
         this.zanr = zanr;
         this.vanusepiirang = vanusepiirang;
@@ -65,11 +65,11 @@ public class Film {
         return vanusepiirang;
     }
 
-    public void setKeel(List<String> keel) {
+    public void setKeel( String keel) {
         this.keel = keel;
     }
 
-    public List<String> getKeel() {
+    public String getKeel() {
         return keel;
     }
 

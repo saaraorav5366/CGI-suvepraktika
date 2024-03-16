@@ -40,23 +40,34 @@ public class VaatamisSoovitused {
         Set<Seanss> soovitused = new HashSet<>();
         for (Seanss seanss : kinokava) {
             Film film = seanss.getFilm();
-            if (film.getZanr().equals(vaadatuimZanr) && !vaadatudFilmid.contains(Arrays.asList(film.getPealkiri(), film.getZanr(), film.getKeel()))) {
-                soovitused.add(seanss);
+            if (film.getZanr().equals(vaadatuimZanr)) {
+                boolean leitud = false;
+                for (List<String> filmInfo : vaadatudFilmid) {
+                    String pealkiri = filmInfo.get(0);
+                    if (Objects.equals(pealkiri, film.getPealkiri())) {
+                        leitud = true;
+                        break;
+                    }
+                }
+                // kui pealkiri ei ole vaadatudFilmid's
+                if (!leitud) {
+                    soovitused.add(seanss);
+                }
             }
         }
 
 //         kui juba enimvaadatud zanri film on nähtud ja sellest zanrist pole muid filme
-//        if (soovitused.isEmpty()) {
-//            String sarnaseimZanr = sarnaseimZanr(vaadatuimZanr);
-//
-//            // otsi filme millel on kõige sarnaseim zanr
-//            for (Seanss seanss : kinokava) {
-//                Film film = seanss.getFilm();
-//                if (film.getZanr().equals(sarnaseimZanr)) {
-//                    soovitused.add(seanss);
-//                }
-//            }
-//        }
+        if (soovitused.isEmpty()) {
+            String sarnaseimZanr = sarnaseimZanr(vaadatuimZanr);
+
+            // otsi filme millel on kõige sarnaseim zanr
+            for (Seanss seanss : kinokava) {
+                Film film = seanss.getFilm();
+                if (film.getZanr().equals(sarnaseimZanr)) {
+                    soovitused.add(seanss);
+                }
+            }
+        }
         return soovitused;
     }
 
