@@ -1,2 +1,3 @@
-eile: 3-4h
-tana: 2.5h
+uleeile: 3-4h
+eile: 2.5h
+tana: 2h
