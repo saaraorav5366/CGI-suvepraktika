@@ -13,8 +13,11 @@ import java.util.Set;
 public class KinoController {
     private final Kinokava kava;
 
-    public KinoController(Kinokava kava) {
+    private final IstekohaSoovitus seatGenerator;
+
+    public KinoController(Kinokava kava, IstekohaSoovitus seatGenerator) {
         this.kava = kava;
+        this.seatGenerator = seatGenerator;
     }
 
 
@@ -42,6 +45,11 @@ public class KinoController {
 
         assert viewer != null;
         return VaatamisSoovitused.genereeriFilmisoovitused(viewer, soovitus);
+    }
+
+    @GetMapping("/kohad")
+    public List<Istekoht> getSaal(int laius, int korgus) {
+        return seatGenerator.genereeriPlaan(laius, korgus);
     }
 }
 

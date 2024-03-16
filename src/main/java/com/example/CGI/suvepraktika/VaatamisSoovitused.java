@@ -1,5 +1,4 @@
 package com.example.CGI.suvepraktika;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

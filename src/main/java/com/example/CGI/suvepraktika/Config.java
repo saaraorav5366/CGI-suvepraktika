@@ -24,8 +24,8 @@ public class Config {
                         List.of("Klass","Draama", "Eesti keel"),
                         List.of("Kevade","Draama", "Eesti keel"),
                         List.of("Poor Things","Draama", "Inglise keel"))));
-        vaatajad.add(new VaatamisAjalugu(new Kasutaja(90235),
-                Set.of(List.of("Klass","Draama", "Eesti keel")))); // alogritm peaks soovitama: Don't Worry Darling ja Poor Things
+        vaatajad.add(new VaatamisAjalugu(new Kasutaja(90235), // alogritm peaks soovitama: Don't Worry Darling ja Poor Things
+                Set.of(List.of("Klass","Draama", "Eesti keel"))));
         return vaatajad;
     }
 }
