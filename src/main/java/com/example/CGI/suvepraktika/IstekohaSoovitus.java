@@ -9,24 +9,23 @@ import java.util.Random;
 @Component
 public class IstekohaSoovitus {
 
-    public List<Istekoht> genereeriPlaan(int laius, int korgus) {
 
-        List<Istekoht> koikKohad = new ArrayList<>();
-        Random random = new Random();
-        //genereeri suvaliselt number 0 kuni maxkohad
+    public int[][] genereeriSaal(int laius, int korgus, int soovitudKohad) {
         int maxKohad = laius*korgus;
-        int voetudKohad = random.nextInt((maxKohad)- 10);
+        int[][] saal = new int[laius][korgus];
+        Random random = new Random();
+        // vahemalt 10 kohta on igas saalis tuhi (lisaks soovitud kohtadele)
+        int voetudKohad = random.nextInt((maxKohad)- 10 - soovitudKohad);
 
-
-        // Randomly fill seats
         while (voetudKohad > 0) {
             int rida = random.nextInt(laius);
             int veerg = random.nextInt(korgus);
-            Istekoht koht = new Istekoht(rida, veerg);
-            koikKohad.add(koht);
-            voetudKohad--;
+            if (saal[rida][veerg] == 0) {
+                saal[rida][veerg] = 1;
+                voetudKohad--;
+            }
         }
-
-        return koikKohad;
+        return saal;
     }
+
 }
