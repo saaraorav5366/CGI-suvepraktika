@@ -95,18 +95,15 @@ public class IstekohaSoovitus {
     }
 
     public int[][] piisavaltKohti(int[][] saal, int soovitudKohad){
-        int leftSeats;
+        int pooledKohad;
         if(soovitudKohad % 2 == 0){
-            leftSeats = (soovitudKohad / 2);
+            pooledKohad = (soovitudKohad / 2);
         }
         else{
-            leftSeats = (soovitudKohad / 2) + 1; //tahan et see number oleks suurem kui rightSeats
+            pooledKohad = (soovitudKohad / 2) + 1; //kui soovitudKohad on paaritu arv siis umarda ules
         }
-        int rightSeats = soovitudKohad - leftSeats;
-        int[][] leftSaal = leiaJarjestKohad(saal, leftSeats);
-        int[][] vastus = soovitaKohad(leftSaal,leftSeats);
-        int[][] rightSaal = soovitaKohad(vastus, rightSeats);
-        return rightSaal;
+        int[][] jarjestKohad = leiaJarjestKohad(saal, pooledKohad);
+        return soovitaKohad(jarjestKohad, pooledKohad);
     }
 
     public int[][] leiaJarjestKohad(int[][] saal, int soovitudKohad) {
