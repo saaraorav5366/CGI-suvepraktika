@@ -52,8 +52,8 @@ public class KinoController {
 
         int[][] saal = seatGenerator.genereeriSaal(5,5, soovitudKohad);
         int[][] saal2 = seatGenerator.leiaJarjestKohad(saal,soovitudKohad);
-//        return seatGenerator.soovitaKohad(saal2, soovitudKohad);
-        return saal2;
+        return seatGenerator.soovitaKohad(saal2, soovitudKohad);
+//        return saal2;
     }
 }
 
