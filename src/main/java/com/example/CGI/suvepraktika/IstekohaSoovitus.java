@@ -1,12 +1,13 @@
 package com.example.CGI.suvepraktika;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Component
+@Service
 public class IstekohaSoovitus {
 
 
@@ -39,6 +40,7 @@ public class IstekohaSoovitus {
         int keskmineRida = rida / 2;
         int keskmineVeerg = veerg / 2;
 
+
         // alusta soovitamist keskmisest reast ja veerust
         int huppecount = 1;
         boolean ulemine = false;
@@ -53,14 +55,12 @@ public class IstekohaSoovitus {
                 if (saal[k][j] == 2) {
                     for (int l = j; l < Math.min(j + soovitudKohad, veerg); l++) {
                         saal[k][l] = 4;
-                        reached = true;
                     }
                     return saal;
                     //kui kohtad num 3 siis tahad minna vasakule
                 } else if (saal[k][j] == 3) {
                     for (int l = j; l > Math.max(j - soovitudKohad, -1); l--) {
                         saal[k][l] = 4;
-                        reached = true;
                     }
                     return saal;
                 }
@@ -70,13 +70,11 @@ public class IstekohaSoovitus {
                 if (saal[k][j] == 2) {
                     for (int l = j; l < Math.min(j + soovitudKohad, veerg); l++) {
                         saal[k][l] = 4;
-                        reached = true;
                     }
                     return saal;
                 } else if (saal[k][j] == 3) { // If the value is 3, mark desired seats to the left
                     for (int l = j; l > Math.max(j - soovitudKohad, -1); l--) {
                         saal[k][l] = 4;
-                        reached = true;
                     }
                     return saal;
                 }
@@ -92,13 +90,24 @@ public class IstekohaSoovitus {
             }
         }
 
-        //kui ei ole piisavalt jarjestikke kohti!!!!
-        if(!reached){
-            return soovitaKohad(saal, soovitudKohad/2);
+        // If not enough seats available
+        if (soovitudKohad > 0) {
+            return piisavaltKohti(copy, soovitudKohad);
+        } else {
+            return saal;
         }
-        return saal;
     }
 
+    public int[][] piisavaltKohti(int[][] saal, int soovitudKohad){
+
+        int leftSeats = soovitudKohad / 2;
+        int rightSeats = soovitudKohad - leftSeats;
+        int[][] saal2 = genereeriSaal(int laius, int korgus, int soovitudKohad)
+        int[][] leftSaal = leiaJarjestKohad(saal, leftSeats);
+        int[][] vastus = soovitaKohad(leftSaal,leftSeats);
+        int[][] rightSaal = soovitaKohad(vastus, rightSeats);
+        return rightSaal;
+    }
 
     public int[][] leiaJarjestKohad(int[][] saal, int soovitudKohad) {
         int rida = saal.length;
@@ -121,3 +130,4 @@ public class IstekohaSoovitus {
         return saal;
     }
 }
+
