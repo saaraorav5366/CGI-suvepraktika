@@ -2,4 +2,4 @@ uleeile: 3-4h
 eile: 2.5h
 tana: 2h
 eile: 1-1.5h
-tana: hetkeseisuga 3h
+tana: hetkeseisuga 4.5h
