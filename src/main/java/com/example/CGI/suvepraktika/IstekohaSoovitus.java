@@ -28,36 +28,58 @@ public class IstekohaSoovitus {
         return saal;
     }
 
-    int[][] soovitaKohad(int[][] saal, int soovitudKohad) {
+    public int[][] soovitaKohad(int[][] saal, int soovitudKohad) {
 
-        int laius = saal[0].length;
-        int korgus = saal.length;
+        int veerg = saal[0].length;
+        int rida = saal.length;
 
-        int keskmineRida = laius / 2;
-        int keskmineVeerg = korgus / 2;
+        int keskmineRida = veerg / 2;
+        int keskmineVeerg = rida / 2;
 
-        int count = 0;
         // alusta soovitamist keskmisest reast ja veerust
+        int j
         for (int k = 0; k <= keskmineRida; k++) {
-            int rida = keskmineRida + k * (k % 2 == 0 ? 1 : -1);
-            if (rida < 0 || rida >= laius) continue;
-            for (int l = 0; l <= keskmineVeerg; l++) {
-                int j = keskmineVeerg + l * (l % 2 == 0 ? 1 : -1);
-                if (j < 0 || j >= korgus) continue;
-                if (saal[rida][j] == 0) {
-                    saal[rida][j] = 3;
-                    count += 1;
-                    if (count == soovitudKohad) {
-                        break;
-                    }
+            int i = keskmineRida + k * (k % 2 == 0 ? 1 : -1);
+            if (i < 0 || i >= veerg) continue;
+            for (j = keskmineVeerg; j <= rida; j++) {
+                if (saal[i][j] == 2) {
+                    for(int m = 0)
                 }
-            }
-            if (count == soovitudKohad) {
-                break;
+                if (saal[i][j] == 3) {
+
+                }
+
+            for (j = keskmineVeerg; j <= 0; j--) {
+                if (saal[i][l] == 2) {
+
+                }
+                if (saal[i][l] == 3) {
+
+                }
             }
         }
         return saal;
     }
 
+    public int[][] leiaJarjestKohad(int[][] saal, int soovitudKohad) {
+        int rida = saal.length;
+        int veerg = saal[0].length;
+        for (int i = 0; i < rida; i++) {
+            int count = 0;
+            for (int j = 0; j < veerg; j++) {
+                if (saal[i][j] == 0) {
+                    count++;
+                    if (count == soovitudKohad) {
+                        saal[i][j - soovitudKohad + 1] = 2;
+                        saal[i][j] = 3;
+                        count = 0; // Reset count
+                    }
+                } else {
+                    count = 0; // Reset count if a seat is occupied
+                }
+            }
+        }
+        return saal;
+    }
 
 }
