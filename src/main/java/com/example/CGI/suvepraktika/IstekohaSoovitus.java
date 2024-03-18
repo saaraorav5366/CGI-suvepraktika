@@ -30,48 +30,75 @@ public class IstekohaSoovitus {
 
     public int[][] soovitaKohad(int[][] saal, int soovitudKohad) {
 
-        int veerg = saal[0].length;
-        int rida = saal.length;
+        int veerg1 = saal[0].length;
+        int rida1 = saal.length;
+        int[][] copy = new int[rida1][veerg1];
+        int veerg = copy[0].length;
+        int rida = copy.length;
 
-        int keskmineRida = veerg / 2;
-        int keskmineVeerg = rida / 2;
+        int keskmineRida = rida / 2;
+        int keskmineVeerg = veerg / 2;
 
         // alusta soovitamist keskmisest reast ja veerust
-        int j = keskmineVeerg;
-        for (int k = 0; k <= keskmineRida; k++) {
-            int i = keskmineRida + k * (k % 2 == 0 ? 1 : -1);
-            if (i < 0 || i >= veerg) continue;
-
+        int huppecount = 1;
+        boolean ulemine = false;
+        int loend = 0;
+        int k = keskmineRida;
+        int j;
+        boolean reached = false;
+        while (k >= 0 && k < rida) {
             // alustad rea keskelt ja lahed paremale
-            for ( ; j < veerg; j++) {
-                // kui kohtad num 2 siis tahad kohti paremale
-                if (saal[i][j] == 2) {
+            for (j = keskmineVeerg; j < veerg; j++) {
+                //kui kohtad num 2 siis tahad minna paremale
+                if (saal[k][j] == 2) {
                     for (int l = j; l < Math.min(j + soovitudKohad, veerg); l++) {
-                        saal[i][l] = 4;
+                        saal[k][l] = 4;
+                        reached = true;
                     }
-                } else if (saal[i][j] == 3) { // If the value is 3, mark desired seats to the left
+                    return saal;
+                    //kui kohtad num 3 siis tahad minna vasakule
+                } else if (saal[k][j] == 3) {
                     for (int l = j; l > Math.max(j - soovitudKohad, -1); l--) {
-                        saal[i][l] = 4;
+                        saal[k][l] = 4;
+                        reached = true;
                     }
+                    return saal;
                 }
             }
-
             //alustad rea keskelt ja lahed vasakule
             for (j = keskmineVeerg - 1; j >= 0; j--) {
-                if (saal[i][j] == 2) {
+                if (saal[k][j] == 2) {
                     for (int l = j; l < Math.min(j + soovitudKohad, veerg); l++) {
-                        saal[i][l] = 4;
+                        saal[k][l] = 4;
+                        reached = true;
                     }
-                } else if (saal[i][j] == 3) { // If the value is 3, mark desired seats to the left
+                    return saal;
+                } else if (saal[k][j] == 3) { // If the value is 3, mark desired seats to the left
                     for (int l = j; l > Math.max(j - soovitudKohad, -1); l--) {
-                        saal[i][l] = 4;
+                        saal[k][l] = 4;
+                        reached = true;
                     }
+                    return saal;
                 }
+            }
+            if (!ulemine) {
+                k = k - huppecount;
+                ulemine = true;
+                huppecount += 1;
+            } else {
+                k = k + huppecount;
+                ulemine = false;
+                huppecount += 1;
             }
         }
 
+        //kui ei ole piisavalt jarjestikke kohti!!!!
+        if(!reached){
+            return soovitaKohad(saal, soovitudKohad/2);
+        }
         return saal;
     }
+
 
     public int[][] leiaJarjestKohad(int[][] saal, int soovitudKohad) {
         int rida = saal.length;
@@ -93,5 +120,4 @@ public class IstekohaSoovitus {
         }
         return saal;
     }
-
 }
