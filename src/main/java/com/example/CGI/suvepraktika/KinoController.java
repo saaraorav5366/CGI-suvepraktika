@@ -51,11 +51,9 @@ public class KinoController {
     @GetMapping("/kohad")
     public int[][] getSaal(int soovitudKohad) {
 
-        int[][] saal = seatGenerator.genereeriSaal(5,5, soovitudKohad);
+        int[][] saal = seatGenerator.genereeriSaal(14,10, soovitudKohad);
         int[][] saal2 = seatGenerator.leiaJarjestKohad(saal,soovitudKohad);
-        int[][] saaltest = new int[5][5];
         return seatGenerator.soovitaKohad(saal2, soovitudKohad);
-//        return
     }
 }
 

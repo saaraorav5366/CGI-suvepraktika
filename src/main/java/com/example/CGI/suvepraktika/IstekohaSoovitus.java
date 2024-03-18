@@ -31,11 +31,11 @@ public class IstekohaSoovitus {
 
     public int[][] soovitaKohad(int[][] saal, int soovitudKohad) {
 
-        int veerg1 = saal[0].length;
-        int rida1 = saal.length;
-        int[][] copy = new int[rida1][veerg1];
-        int veerg = copy[0].length;
-        int rida = copy.length;
+        int veerg = saal[0].length;
+        int rida = saal.length;
+//        int[][] copy = new int[rida1][veerg1];
+//        int veerg = copy[0].length;
+//        int rida = copy.length;
 
         int keskmineRida = rida / 2;
         int keskmineVeerg = veerg / 2;
@@ -47,7 +47,6 @@ public class IstekohaSoovitus {
         int loend = 0;
         int k = keskmineRida;
         int j;
-        boolean reached = false;
         while (k >= 0 && k < rida) {
             // alustad rea keskelt ja lahed paremale
             for (j = keskmineVeerg; j < veerg; j++) {
@@ -102,8 +101,11 @@ public class IstekohaSoovitus {
         else{
             pooledKohad = (soovitudKohad / 2) + 1; //kui soovitudKohad on paaritu arv siis umarda ules
         }
+        int ulejaanudKohad = soovitudKohad - pooledKohad;
         int[][] jarjestKohad = leiaJarjestKohad(saal, pooledKohad);
-        return soovitaKohad(jarjestKohad, pooledKohad);
+        int[][] poolSaal = soovitaKohad(jarjestKohad, pooledKohad);
+        return soovitaKohad(poolSaal, ulejaanudKohad);
+
     }
 
     public int[][] leiaJarjestKohad(int[][] saal, int soovitudKohad) {
