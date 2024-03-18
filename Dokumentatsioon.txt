@@ -3,3 +3,4 @@ eile: 2.5h
 tana: 2h
 eile: 1-1.5h
 tana: hetkeseisuga 4.5h
+tana: 1h 20min
