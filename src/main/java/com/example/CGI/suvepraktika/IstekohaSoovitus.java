@@ -72,7 +72,7 @@ public class IstekohaSoovitus {
                         saal[k][l] = 4;
                     }
                     return saal;
-                } else if (saal[k][j] == 3) { // If the value is 3, mark desired seats to the left
+                } else if (saal[k][j] == 3) {
                     for (int l = j; l > Math.max(j - soovitudKohad, -1); l--) {
                         saal[k][l] = 4;
                     }
@@ -90,19 +90,19 @@ public class IstekohaSoovitus {
             }
         }
 
-        // If not enough seats available
-        if (soovitudKohad > 0) {
-            return piisavaltKohti(copy, soovitudKohad);
-        } else {
-            return saal;
-        }
+
+        return piisavaltKohti(saal, soovitudKohad);
     }
 
     public int[][] piisavaltKohti(int[][] saal, int soovitudKohad){
-
-        int leftSeats = soovitudKohad / 2;
+        int leftSeats;
+        if(soovitudKohad % 2 == 0){
+            leftSeats = (soovitudKohad / 2);
+        }
+        else{
+            leftSeats = (soovitudKohad / 2) + 1; //tahan et see number oleks suurem kui rightSeats
+        }
         int rightSeats = soovitudKohad - leftSeats;
-        int[][] saal2 = genereeriSaal(int laius, int korgus, int soovitudKohad)
         int[][] leftSaal = leiaJarjestKohad(saal, leftSeats);
         int[][] vastus = soovitaKohad(leftSaal,leftSeats);
         int[][] rightSaal = soovitaKohad(vastus, rightSeats);
