@@ -3,6 +3,7 @@ import java.util.List;
 
 /**
  * Klass nimega Seanss, mis esindab kinofilmi ja algusaja atribuute ja käitumist.
+ * Kirjeldab ühte seanssi kinokavas.
  */
 public class Seanss {
 

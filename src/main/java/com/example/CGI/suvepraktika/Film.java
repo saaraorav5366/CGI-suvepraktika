@@ -1,12 +1,15 @@
 package com.example.CGI.suvepraktika;
+
 /**
  * Klass nimega Film, mis esindab kinofilmi atribuute ja käitumist.
  */
 public class Film {
+
     /**
      *  Filmi pealkiri on esitatud Stringina.
      */
     private String pealkiri;
+
     /**
      *  Filmi žanr on esitatud Stringina.
      */

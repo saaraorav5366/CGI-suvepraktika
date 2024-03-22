@@ -1,6 +1,7 @@
 package com.example.CGI.suvepraktika;
 import java.util.List;
 import java.util.Set;
+
 /**
  * Klass nimega VaatamisaAjalugu, mis esindab kasutaja vaatamis ajaloo atribuute ja käitumist.
  */

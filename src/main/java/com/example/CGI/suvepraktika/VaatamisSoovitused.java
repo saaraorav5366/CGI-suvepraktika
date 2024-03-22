@@ -37,7 +37,7 @@ public class VaatamisSoovitused {
             return suvalisedSoovitused;
         }
 
-        // kasutan HashMap'i et loendada mitu korda on ta ühte žanri näinud
+        // kasutan HashMap'i et loendada mitu korda on kasutaja ühte žanri näinud
         Map<String, Integer> zanrArv = new HashMap<>();
         for (List<String> filmInfo : vaadatudFilmid) {
             String zanr = filmInfo.get(1); // zanr asub index 1

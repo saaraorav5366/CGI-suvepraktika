@@ -1,4 +1,5 @@
 package com.example.CGI.suvepraktika;
+
 /**
  * Klass nimega kasutaja, mis esindab kinokasutaja atribuute ja käitumist.
  */

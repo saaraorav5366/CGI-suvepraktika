@@ -1,6 +1,7 @@
 package com.example.CGI.suvepraktika;
 import org.springframework.stereotype.Component;
 import java.util.*;
+
 /**
  * Klass nimega Kinokava, mis esindab hetke kinokava atribuute ja käitumist.
  */
