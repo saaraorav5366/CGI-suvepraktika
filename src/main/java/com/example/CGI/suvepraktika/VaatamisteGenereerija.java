@@ -1,19 +1,25 @@
 package com.example.CGI.suvepraktika;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+/**
+ * Klass nimega Kinokava, mis genereerib vaatamised
+ */
 @Component
-public class Config {
+public class VaatamisteGenereerija {
+
+        /**
+         * Meetod, mis genereerib kasutaja ja tema vaatamis ajaloo.
+         * @return vaataja vaatamis ajaloo, mis on esitatud List<VaatamisAjalugu> kujul.
+         */
         public static List<VaatamisAjalugu> genereeriVaatajad(){
         List<VaatamisAjalugu> vaatajad = new ArrayList<>();
         vaatajad.add(new VaatamisAjalugu(new Kasutaja(90220), new HashSet<>(new ArrayList<>()))); //vaatamisajalugu puudub
         vaatajad.add(new VaatamisAjalugu(new Kasutaja(90225),
-                Set.of(List.of("Oppenheimer","Ponevik", "Inglise keel"), // on kõige rohkem põnevikke näinud
+                Set.of(List.of("Oppenheimer","Ponevik", "Inglise keel"),
                 List.of("Barbie","Komoodia", "Inglise keel"),           // algoritm peaks soovitama: Spider-Man: No Way Home
                 List.of("Step Brothers","Komoodia", "Inglise keel"),
                 List.of("The Matrix","Ponevik", "Inglise keel"),

@@ -4,3 +4,12 @@ tana: 2h
 eile: 1-1.5h
 tana: hetkeseisuga 4.5h
 tana: 1h 20min
+
+Ülesande lahendamine on mitmesti mõistetav. Oleks võinud kasutada IBMD või mingit muud sarnast avalikku andmebaasi,
+et genereerida kinokava (genereeriKinokava meetod, klassis Kinokava), aga otsustasin ise manuaalselt kinokava sisestada.
+
+
+Vanusepiirang: oleks saanud rakendada "mitte alla 12 soovitatud" vms, otsustasin rakendada vanusepiirangu täisarvuna,
+et mul endal oleks kergem programmeerida.
+
+manuaalselt kinokava ja vaatamisajaloo sisestamisel tekkis kirjavigu ja seetõttu mõningaid vigu oli testimisel raske leida.

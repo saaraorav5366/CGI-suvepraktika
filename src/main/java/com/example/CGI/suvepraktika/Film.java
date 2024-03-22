@@ -1,7 +1,4 @@
 package com.example.CGI.suvepraktika;
-
-import java.util.List;
-
 /**
  * Klass nimega Film, mis esindab kinofilmi atribuute ja käitumist.
  */
@@ -40,33 +37,19 @@ public class Film {
         this.keel = keel;
     }
 
-
-    public void setPealkiri(String pealkiri) {
-        this.pealkiri = pealkiri;
-    }
-
+    /**
+     *  Getter meetodid pealkirja, zanri, vanusepiirangu ja keele kasutamiseks.
+     */
     public String getPealkiri() {
         return pealkiri;
-    }
-
-    public void setZanr(String zanr) {
-        this.zanr = zanr;
     }
 
     public String getZanr() {
         return zanr;
     }
 
-    public void setVanusepiirang(Integer vanusepiirang) {
-        this.vanusepiirang = vanusepiirang;
-    }
-
     public Integer getVanusepiirang() {
         return vanusepiirang;
-    }
-
-    public void setKeel( String keel) {
-        this.keel = keel;
     }
 
     public String getKeel() {

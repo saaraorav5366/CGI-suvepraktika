@@ -1,23 +1,25 @@
 package com.example.CGI.suvepraktika;
-
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-
+/**
+ * Klass nimega IstekohaSoovitus, mis soovitab kasutajale istekoha vastavalt
+ * vabadele kohtadele saalis ja mitu istekohta soovitakse.
+ */
 @Service
 public class IstekohaSoovitus {
 
-
+    /**
+     * Meetod, mis suvaliselt täidab saali suvalise arvu võetud istekohtadega.
+     * @return kinosaal mis on suvaliste võetud istekohatedga täidetud.
+     */
     public int[][] genereeriSaal(int laius, int korgus, int soovitudKohad) {
+        // arvuta saali suurus
         int maxKohad = laius*korgus;
         int[][] saal = new int[laius][korgus];
         Random random = new Random();
         // vahemalt 5 kohta on igas saalis tuhi (lisaks soovitud kohtadele)
         int voetudKohad = random.nextInt((maxKohad)- 5 - soovitudKohad);
-
+        // suvaliselt täida kino võetud istekohtadega
         while (voetudKohad > 0) {
             int rida = random.nextInt(laius);
             int veerg = random.nextInt(korgus);
@@ -33,13 +35,8 @@ public class IstekohaSoovitus {
 
         int veerg = saal[0].length;
         int rida = saal.length;
-//        int[][] copy = new int[rida1][veerg1];
-//        int veerg = copy[0].length;
-//        int rida = copy.length;
-
         int keskmineRida = rida / 2;
         int keskmineVeerg = veerg / 2;
-
 
         // alusta soovitamist keskmisest reast ja veerust
         int huppecount = 1;
@@ -108,6 +105,10 @@ public class IstekohaSoovitus {
 
     }
 
+    /**
+     * Meetod mis kontrollib, kas saalis on piisavalt järjestikke kohti soovitud kohtade jaoks. (Kas mitu piletit saab kõrvuti istuda)
+     * @return kinosaal, mis on esitatud int[][] kujul.
+     */
     public int[][] leiaJarjestKohad(int[][] saal, int soovitudKohad) {
         int rida = saal.length;
         int veerg = saal[0].length;

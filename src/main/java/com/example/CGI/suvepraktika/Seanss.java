@@ -1,5 +1,4 @@
 package com.example.CGI.suvepraktika;
-
 import java.util.List;
 
 /**
@@ -28,19 +27,15 @@ public class Seanss {
         this.algusaeg = algusaeg;
     }
 
+    /**
+     *  Getter meetodid filmi ja algusaja kasutamiseks.
+     */
     public Film getFilm() {
         return film;
-    }
-
-    public void setFilm(Film film) {
-        this.film = film;
     }
 
     public List<Double> getAlgusaeg() {
         return algusaeg;
     }
 
-    public void setAlgusaeg(List<Double> algusaeg) {
-        this.algusaeg = algusaeg;
-    }
 }
