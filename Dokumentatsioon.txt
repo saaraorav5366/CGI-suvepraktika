@@ -1,15 +1,62 @@
-uleeile: 3-4h
-eile: 2.5h
-tana: 2h
-eile: 1-1.5h
-tana: hetkeseisuga 4.5h
-tana: 1h 20min
+ÜLESANNE
 
-Ülesande lahendamine on mitmesti mõistetav. Oleks võinud kasutada IBMD või mingit muud sarnast avalikku andmebaasi,
-et genereerida kinokava (genereeriKinokava meetod, klassis Kinokava), aga otsustasin ise manuaalselt kinokava sisestada.
+Luua kinokülastajale filmi ning saalis istekohtade soovitamise veebirakendus.
+Kinokülastaja peab saama rakendada erinevaid filtreid, mille alusel
+talle soovitatakse, milliseid filme ta kinokavast võiks vaadata. Kui kasutajal on kinokülastuste ajalugu,
+peaks arvesse võtma, millistest žanritest filme ning millisel ajal on ta varem vaadanud.
+Kui kasutaja on valinud filmi, mida soovib vaadata, peab rakendus talle soovitama istekoha(d).
+Istekoha soovitamine peab toimuma kinosaali plaanil. Juba kinni olevad istekohad võiks genereerida
+juhuslikult, kohtade soovitamisel tuleks arvesse võtta, et inimestele meeldib üldjuhul istuda ekraani
+suhtes võimalikult keskel ning mitte liiga lähedal ega kaugel.
 
+TÖÖAEG
 
-Vanusepiirang: oleks saanud rakendada "mitte alla 12 soovitatud" vms, otsustasin rakendada vanusepiirangu täisarvuna,
-et mul endal oleks kergem programmeerida.
+Ülesande lahendamiseks kulus kokku umbes 16.5 - 18 tundi. Sellest esimene tund võttis aega,
+et Spring Booti tundma õppida. Kuskil 3-4 tundi kulus koodi kommenteerimisele, klassidele kirjelduse kirjutamine
+ja ülesande dokumenteerimisele. Ülejäänud aeg kulus programmi kirjutamisele.
 
-manuaalselt kinokava ja vaatamisajaloo sisestamisel tekkis kirjavigu ja seetõttu mõningaid vigu oli testimisel raske leida.
+MIS OLI KEERULINE
+
+Üheks kõige keerulisemaks osaks oli Spring Booti integreerimine ja rakenduse konfiguratsiooni seadistamine.
+Mitu korda esines viga, kus klass nõudis 'java.lang.Integer' tüüpi olemi, mida ei leitud. Veakoodi mõistmine ja lahendamine
+võttis üsna kaua aega ning nõudis paremat arusaamist Spring Booti tööpõhimõtetest ja sellest, kuidas Spring loob ja hallab 'bean'e'.
+
+Samuti keeruline ja aeganõudev oli istekohtade soovitamise algoritmi välja mõtlemine. Ma kasutasin saali tähistamiseks 2D array'd,
+mida ülevalt alla on lihtne läbi käia (iterate). Kuna optimaalsed kohad on saali keskel, siis pidin välja mõtlema uue loogika, et 2D array's saaks
+läbida keskelt järjest väljapoole.
+
+Viimaseks väljakutseks osutus klasside kujundamine, eriti selles osas, kuidas Spring Boot käsitleb Interface'i ja nende implementatsioone.
+Ma tean end nii mõningat minu praegust klassi oleks saanud integreerida kasutades Interface'i, aga et teha Spring Boot'i kasutamine endale
+võimalikult kergeks ostustasin rakendada klasse.
+
+MÄRKMED
+
+* Minu jaoks oli ülesande lahendamine mitmesti mõistetav.
+
+  * Ma oleks võinud kasutada IMDB või mingit muud sarnast avalikku andmebaasi, et genereerida kinokava ja vaatamisajalugu,
+    aga otsustasin ise manuaalselt kinokava ja igale kasutajale vaatamisajaloo sisestada. Otsustasin manuaalse sisestuse kasuks, kuna ülesande
+    kirjelduses ei olnud kirjas et tuleb avalikku andmebaasi kasutada ja manuaalne sisestus tegi programmeerimise lihtsamaks.
+
+  * Veel oli võimalus paari programmi elementi mitmet viisi rakendada. Näiteks filmi vanusepiirang oleksin saanud rakendada kasutades
+    String tüüpi kus filmi vanusepiirang oleks olnud näiteks: "Mitte soovitatud alla 12a". Kuna selle filtri programeerimine oleks olnud üsangi keerukas,
+    siis ostsustasin vanusepiirangus kasutada täisarvu. Minu filtreerimis meetod vanusepiirangule töötab nii: kui kasutaja sisestab vanusepiiranguks 14,
+    siis otsingus näitab kõiki filme, millel on vanusepiirang kas 14 või vanem.
+
+* Manuaalse sisestusega tekkis mõningaid probleeme.
+
+  * Üks probleem mis tekkis oli see, et olin ise filmi žanri kirjaveaga sisestnud. Nt. kasutaja vaatamisajaloos oli kaks filmi žanriga draama,
+    kuid üks neist oli kirjutatud 'Draama' ja teine 'Drama'. Probleem tekkis siis, kui proovisin loendada, mitu draamafilmi kasutaja näinud oli.
+    Koodi testides sain pidevalt vale arvu draamafilme ja probleemi tekke põhjust oli raske leida.
+
+* Kohtade soovitamise täiustamine
+
+  * Istekohtade soovitamise algoritm töötab üldjuhul hästi, kuid harva esineb probleem, et algoritm soovitab kahel piletil eraldi istuda,
+    kuigi on piisavalt ruumi, et kõrvuti istuda. Märkasin, et probleem esinem ainult siis kui näitek: soovitud piletite arv on 5 ja saalis pole
+    viite kõrvuti kohta. Siis minu algoritm jagab piletite arvu pooleks. Esimesed kolm kohta suudab algoritm ilusti kõrvuti istuma panna, aga viimased
+    kaks kohta paneb algoritm vahepeal eraldi istuma, kuigi kinosaalis leidub kaks kõrvuti kohta.
+
+    * Järgmine samm
+
+        * Aja puudlikuse tõttu ei suutnud ma välja selgitada, miks selline probleem tekib. Järgmiseks sammuks võiks olla iga black and
+        white box testi välja mõtlemine ja programmi hoolikas testimine.
+
