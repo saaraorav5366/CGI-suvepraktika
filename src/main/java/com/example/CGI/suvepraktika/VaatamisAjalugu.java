@@ -35,6 +35,5 @@ public class VaatamisAjalugu {
     public Set<List<String>> getVaadatudFilmid() {
         return vaadatudFilmid;
     }
-
 }
 

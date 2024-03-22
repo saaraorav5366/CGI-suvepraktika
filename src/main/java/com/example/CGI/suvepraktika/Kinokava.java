@@ -54,5 +54,4 @@ public class Kinokava {
         }
         return filtreeritudKava;
     }
-
 }

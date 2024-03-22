@@ -32,5 +32,6 @@ public class VaatamisteGenereerija {
         vaatajad.add(new VaatamisAjalugu(new Kasutaja(90235), // alogritm soovitab: Don't Worry Darling ja Poor Things
                 Set.of(List.of("Klass","Draama", "Eesti keel"))));
         return vaatajad;
+
     }
 }

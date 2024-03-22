@@ -77,5 +77,6 @@ public class KinoController {
         int[][] saal2 = kohaSoovitus.leiaJarjestKohad(saal,soovitudKohad);
         return kohaSoovitus.soovitaKohad(saal2, soovitudKohad);
     }
+
 }
 

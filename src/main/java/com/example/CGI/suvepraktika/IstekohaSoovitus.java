@@ -160,5 +160,6 @@ public class IstekohaSoovitus {
         }
         return saal;
     }
+
 }
 

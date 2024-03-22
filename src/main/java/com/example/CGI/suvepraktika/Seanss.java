@@ -38,5 +38,4 @@ public class Seanss {
     public List<Double> getAlgusaeg() {
         return algusaeg;
     }
-
 }

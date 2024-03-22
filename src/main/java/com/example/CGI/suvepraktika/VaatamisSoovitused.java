@@ -100,4 +100,5 @@ public class VaatamisSoovitused {
             return "Seiklusfilm";
         }
     }
+
 }

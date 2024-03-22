@@ -24,4 +24,5 @@ public class Kasutaja {
     public Integer getKasutajaId(){
         return kasutajaId;
     }
+
 }
